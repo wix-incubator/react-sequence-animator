@@ -1,0 +1,70 @@
+{
+  "name": "react-sequence-animator",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Jonathan Adler",
+    "email": "jonathana@wix.com"
+  },
+  "main": "dist/src/index.js",
+  "files": [
+    "dist",
+    "src",
+    "testkit"
+  ],
+  "publishConfig": {
+    "registry": "http://npm.dev.wixpress.com/"
+  },
+  "scripts": {
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build && build-storybook",
+    "test": "yoshi test",
+    "posttest": "yoshi lint",
+    "start": "yoshi start & npm run storybook",
+    "release": "yoshi release && teamcity-surge-autorelease --dist=storybook-static",
+    "pr-release": "teamcity-surge-autorelease --dist=storybook-static",
+    "storybook": "start-storybook -p 6006"
+  },
+  "devDependencies": {
+    "@storybook/react": "^4.0.0-alpha.0",
+    "@storybook/storybook-deployer": "~2.0.0",
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "chai": "~4.1.0",
+    "enzyme": "~2.9.0",
+    "husky": "~0.14.0",
+    "jsdom": "~11.1.0",
+    "prop-types": "^15.6.2",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-test-renderer": "~15.6.0",
+    "teamcity-surge-autorelease": "^1.0.3",
+    "yoshi": "^2.1.2"
+  },
+  "yoshi": {
+    "entry": {
+      "app": "index.js"
+    },
+    "externals": {
+      "react": "React",
+      "react-dom": "ReactDOM"
+    },
+    "hmr": "auto"
+  },
+  "module": "dist/es/src/index.js",
+  "dependencies": {
+    "babel-runtime": "~6.25.0",
+    "easing-utils": "0.0.7",
+    "react-autobind": "^1.0.6"
+  },
+  "babel": {
+    "plugins": [
+      "transform-runtime"
+    ],
+    "presets": [
+      "wix"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "wix/react"
+  }
+}
