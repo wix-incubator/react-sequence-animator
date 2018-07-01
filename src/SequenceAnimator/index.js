@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import * as Easings from 'easing-utils';
 import autoBind from 'react-autobind';
 
+function doEase(pos, start, end) {
+  return start + ((end - start) * pos);
+}
+
+export const ease = easeName => (t, start, end, duration) => doEase(Easings[easeName](t / duration), start, end);
+
 export default class SequenceAnimator extends Component {
     static displayName = 'SequenceAnimator';
 
@@ -55,8 +61,9 @@ export default class SequenceAnimator extends Component {
     _getFrame() {
       const {frame} = this.state;
       const {children} = this.props;
+      const childrenArr = React.Children.toArray(children);
 
-      return (children.length >= frame) ? children[frame] : null;
+      return (childrenArr.length >= frame) ? childrenArr[frame] : null;
     }
 
     start() {
@@ -71,29 +78,29 @@ export default class SequenceAnimator extends Component {
       this._animationFrame = requestAnimationFrame(this._onAnimate);
     }
 
-    _onAnimate() {
-      const {frame} = this.state;
-      const {children, loop} = this.props;
-      let nextFrame = frame + 1;
+    _onAnimate(timestamp) {
+      const {children, loop, easing, duration} = this.props;
+      const childrenArr = React.Children.toArray(children);
 
-      if (nextFrame > children.length - 1) {
+      if (!this._animationStart) {
+        this._animationStart = timestamp;
+      }
+
+      let nextFrame = Math.floor(ease(easing)(timestamp - this._animationStart, 0, childrenArr.length, duration));
+
+      if (nextFrame > childrenArr.length - 1) {
         if (loop) {
-          nextFrame %= children.length;
+          nextFrame %= childrenArr.length;
+          this._animationStart = timestamp;
         } else {
           nextFrame = -1;
         }
       }
 
       if (nextFrame > -1) {
-        this.setState({frame: ((frame + 1) % (children ? children.length : 1))}, () => {
+        this.setState({frame: nextFrame}, () => {
           this._playAnimation();
         });
       }
     }
 }
-
-function doEase(pos, start, end) {
-  return start + ((end - start) * pos);
-}
-
-export const ease = easeName => (t, start, end, duration) => doEase(Easings[easeName](t / duration), start, end);
