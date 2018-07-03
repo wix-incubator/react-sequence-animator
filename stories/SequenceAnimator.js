@@ -2,7 +2,7 @@ import React from 'react';
 import autoBind from 'react-autobind';
 import SequenceAnimator from '../src/SequenceAnimator/index.js';
 import AnimationStory from './AnimationStory';
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 
 const cat1 = require('./statics/cat1.png');
 const cat2 = require('./statics/cat2.png');

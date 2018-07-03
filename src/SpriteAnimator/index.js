@@ -1,7 +1,7 @@
 import React from 'react';
-import * as Easings from "easing-utils";
-import autoBind from "react-autobind";
-import PropTypes from "prop-types";
+import * as Easings from 'easing-utils';
+import autoBind from 'react-autobind';
+import PropTypes from 'prop-types';
 
 export default class SpriteAnimator extends React.Component {
   static displayName = 'SpriteAnimator';

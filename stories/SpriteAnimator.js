@@ -2,7 +2,7 @@ import React from 'react';
 import autoBind from 'react-autobind';
 import SpriteAnimator from '../src/SpriteAnimator';
 import AnimationStory from './AnimationStory';
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 
 const sprite = require('./statics/sprites-cat-running.png');
 
