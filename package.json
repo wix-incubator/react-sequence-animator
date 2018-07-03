@@ -17,7 +17,7 @@
   },
   "scripts": {
     "precommit": "yoshi lint",
-    "pretest": "yoshi build && build-storybook",
+    "pretest": "yoshi build && build-storybook && import-path --path ./src",
     "test": "yoshi test",
     "posttest": "yoshi lint",
     "start": "yoshi start & npm run storybook",
@@ -32,6 +32,7 @@
     "chai": "~4.1.0",
     "enzyme": "~2.9.0",
     "husky": "~0.14.0",
+    "import-path": "^1.0.2",
     "jsdom": "~11.1.0",
     "prop-types": "^15.6.2",
     "react": "15.6.1",

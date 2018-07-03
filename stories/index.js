@@ -1,8 +1,3 @@
-import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Animation from './Animation';
+import SequenceAnimator from './SequenceAnimator';
+import SpriteAnimator from './SpriteAnimator';
 
-storiesOf('Hello', module)
-  .add('default view', () => (
-    <Animation/>
-  ));

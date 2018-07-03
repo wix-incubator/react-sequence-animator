@@ -1,6 +1,8 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import SequenceAnimator from '../src/SequenceAnimator';
+import SequenceAnimator from '../src/SequenceAnimator/index.js';
+import AnimationStory from './AnimationStory';
+import { storiesOf } from '@storybook/react';
 
 const cat1 = require('./statics/cat1.png');
 const cat2 = require('./statics/cat2.png');
@@ -11,20 +13,16 @@ const cat6 = require('./statics/cat6.png');
 const cat7 = require('./statics/cat7.png');
 const cat8 = require('./statics/cat8.png');
 
-export default class Animation extends React.Component {
+class SequenceAnimatorStory extends React.Component {
   constructor() {
     super();
-    this.state = {
-      duration: 1000
-    };
     autoBind(this);
   }
 
   render() {
-    const {duration} = this.state;
     return (
-      <div>
-        <SequenceAnimator autoplay duration={duration}>
+      <AnimationStory>
+        <SequenceAnimator autoplay>
           <img src={cat1} alt="1"/>
           <img src={cat2} alt="2"/>
           <img src={cat3} alt="3"/>
@@ -34,13 +32,12 @@ export default class Animation extends React.Component {
           <img src={cat7} alt="7"/>
           <img src={cat8} alt="8"/>
         </SequenceAnimator>
-        <div><label htmlFor="duration">Duration:</label><input type="number" value={duration} onChange={this._onDurationChange}/></div>
-      </div>
+      </AnimationStory>
     );
   }
-
-  _onDurationChange(e) {
-    const {target} = e;
-    this.setState({duration: target.value});
-  }
 }
+
+storiesOf('Animations', module)
+  .add('Sequence Animator', () => (
+    <SequenceAnimatorStory/>
+  ));

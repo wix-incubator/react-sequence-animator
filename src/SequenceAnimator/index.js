@@ -74,6 +74,10 @@ export default class SequenceAnimator extends Component {
       cancelAnimationFrame(this._animationFrame);
     }
 
+    reset() {
+      this.setState({frame: 0});
+    }
+
     _playAnimation() {
       this._animationFrame = requestAnimationFrame(this._onAnimate);
     }
