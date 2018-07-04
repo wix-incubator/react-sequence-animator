@@ -12,3 +12,5 @@ package-lock.json
 storybook-static
 storybook-e2e
 .yo-rc.json
+/*.js
+!wallaby.js

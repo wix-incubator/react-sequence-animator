@@ -9,8 +9,8 @@
   "main": "dist/src/index.js",
   "files": [
     "dist",
-    "src",
-    "testkit"
+    "*.js",
+    "!wallaby.js"
   ],
   "publishConfig": {
     "registry": "http://npm.dev.wixpress.com/"
