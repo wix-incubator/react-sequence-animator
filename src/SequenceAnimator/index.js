@@ -21,14 +21,16 @@ export default class SequenceAnimator extends Component {
     children: PropTypes.oneOfType([
       React.PropTypes.arrayOf(React.PropTypes.node),
       React.PropTypes.node
-    ])
+    ]),
+    onSequenceEnd: PropTypes.func
   };
 
   static defaultProps = {
     autoplay: true,
     easing: 'linear',
     loop: true,
-    children: []
+    children: [],
+    onSequenceEnd: () => {}
   };
 
   constructor() {
@@ -83,7 +85,7 @@ export default class SequenceAnimator extends Component {
   }
 
   _onAnimate(timestamp) {
-    const {children, loop, easing, duration} = this.props;
+    const {onSequenceEnd, children, loop, easing, duration} = this.props;
     const childrenArr = React.Children.toArray(children);
 
     if (!this._animationStart) {
@@ -93,6 +95,8 @@ export default class SequenceAnimator extends Component {
     let nextFrame = Math.floor(ease(easing)(timestamp - this._animationStart, 0, childrenArr.length, duration));
 
     if (nextFrame > childrenArr.length - 1) {
+      onSequenceEnd();
+
       if (loop) {
         nextFrame %= childrenArr.length;
         this._animationStart = timestamp;
