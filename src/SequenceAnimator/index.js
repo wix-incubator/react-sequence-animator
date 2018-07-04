@@ -10,101 +10,101 @@ function doEase(pos, start, end) {
 export const ease = easeName => (t, start, end, duration) => doEase(Easings[easeName](t / duration), start, end);
 
 export default class SequenceAnimator extends Component {
-    static displayName = 'SequenceAnimator';
+  static displayName = 'SequenceAnimator';
 
-    static propTypes = {
-      autoplay: PropTypes.bool,
-      duration: PropTypes.number,
-      delay: PropTypes.number,
-      loop: PropTypes.bool,
-      easing: PropTypes.oneOf(Object.keys(Easings)),
-      children: PropTypes.oneOfType([
-        React.PropTypes.arrayOf(React.PropTypes.node),
-        React.PropTypes.node
-      ])
+  static propTypes = {
+    autoplay: PropTypes.bool,
+    duration: PropTypes.number,
+    delay: PropTypes.number,
+    loop: PropTypes.bool,
+    easing: PropTypes.oneOf(Object.keys(Easings)),
+    children: PropTypes.oneOfType([
+      React.PropTypes.arrayOf(React.PropTypes.node),
+      React.PropTypes.node
+    ])
+  };
+
+  static defaultProps = {
+    autoplay: true,
+    easing: 'linear',
+    loop: true,
+    children: []
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      frame: 0
     };
+    autoBind(this);
+  }
 
-    static defaultProps = {
-      autoplay: true,
-      easing: 'linear',
-      loop: true,
-      children: []
-    };
+  componentDidMount() {
+    const {autoplay} = this.props;
 
-    constructor() {
-      super();
-      this.state = {
-        frame: 0
-      };
-      autoBind(this);
+    if (autoplay) {
+      this.start();
+    }
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._animationFrame);
+  }
+
+  start() {
+    this._playAnimation();
+  }
+
+  stop() {
+    cancelAnimationFrame(this._animationFrame);
+  }
+
+  reset() {
+    this.setState({frame: 0});
+  }
+
+  render() {
+    const frame = this._getFrame();
+    return (
+      <div>{frame}</div>
+    );
+  }
+
+  _getFrame() {
+    const {frame} = this.state;
+    const {children} = this.props;
+    const childrenArr = React.Children.toArray(children);
+
+    return (childrenArr.length >= frame) ? childrenArr[frame] : null;
+  }
+
+  _playAnimation() {
+    this._animationFrame = requestAnimationFrame(this._onAnimate);
+  }
+
+  _onAnimate(timestamp) {
+    const {children, loop, easing, duration} = this.props;
+    const childrenArr = React.Children.toArray(children);
+
+    if (!this._animationStart) {
+      this._animationStart = timestamp;
     }
 
-    componentDidMount() {
-      const {autoplay} = this.props;
+    let nextFrame = Math.floor(ease(easing)(timestamp - this._animationStart, 0, childrenArr.length, duration));
 
-      if (autoplay) {
-        this.start();
-      }
-    }
-
-    componentWillUnmount() {
-      cancelAnimationFrame(this._animationFrame);
-    }
-
-    render() {
-      const frame = this._getFrame();
-      return (
-        <div>{frame}</div>
-      );
-    }
-
-    _getFrame() {
-      const {frame} = this.state;
-      const {children} = this.props;
-      const childrenArr = React.Children.toArray(children);
-
-      return (childrenArr.length >= frame) ? childrenArr[frame] : null;
-    }
-
-    start() {
-      this._playAnimation();
-    }
-
-    stop() {
-      cancelAnimationFrame(this._animationFrame);
-    }
-
-    reset() {
-      this.setState({frame: 0});
-    }
-
-    _playAnimation() {
-      this._animationFrame = requestAnimationFrame(this._onAnimate);
-    }
-
-    _onAnimate(timestamp) {
-      const {children, loop, easing, duration} = this.props;
-      const childrenArr = React.Children.toArray(children);
-
-      if (!this._animationStart) {
+    if (nextFrame > childrenArr.length - 1) {
+      if (loop) {
+        nextFrame %= childrenArr.length;
         this._animationStart = timestamp;
-      }
-
-      let nextFrame = Math.floor(ease(easing)(timestamp - this._animationStart, 0, childrenArr.length, duration));
-
-      if (nextFrame > childrenArr.length - 1) {
-        if (loop) {
-          nextFrame %= childrenArr.length;
-          this._animationStart = timestamp;
-        } else {
-          nextFrame = -1;
-        }
-      }
-
-      if (nextFrame > -1) {
-        this.setState({frame: nextFrame}, () => {
-          this._playAnimation();
-        });
+      } else {
+        nextFrame = -1;
       }
     }
+
+    if (nextFrame > -1) {
+      this.setState({frame: nextFrame}, () => {
+        this._playAnimation();
+      });
+    }
+  }
 }

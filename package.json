@@ -66,6 +66,9 @@
     ]
   },
   "eslintConfig": {
-    "extends": "wix/react"
+    "extends": "wix/react",
+    "rules": {
+      "react/jsx-handler-names": "off"
+    }
   }
 }

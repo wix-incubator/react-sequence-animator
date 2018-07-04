@@ -1,8 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 
 export default class AnimationStory extends React.Component {
   static displayName = 'AnimationStory';
+
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      React.PropTypes.arrayOf(React.PropTypes.node),
+      React.PropTypes.node
+    ])
+  };
 
   constructor() {
     super();
