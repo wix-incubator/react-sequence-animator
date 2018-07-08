@@ -9,13 +9,15 @@ export default class AnimationStory extends React.Component {
     children: PropTypes.oneOfType([
       React.PropTypes.arrayOf(React.PropTypes.node),
       React.PropTypes.node
-    ])
+    ]),
+    showReset: PropTypes.bool,
+    duration: PropTypes.number
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      duration: 600,
+      duration: props.duration || 600,
       isRunning: true
     };
     autoBind(this);
@@ -23,15 +25,15 @@ export default class AnimationStory extends React.Component {
 
   render() {
     const {duration, isRunning} = this.state;
-    const {children} = this.props;
+    const {children, showReset} = this.props;
     const btnText = isRunning ? 'Pause' : 'Play';
 
     return (
       <div>
-        {React.cloneElement(React.Children.only(children), {ref: this._elemRef, duration})}
+        {React.cloneElement(React.Children.only(children), {ref: this._elemRef, duration: Number(duration)})}
         <div><label htmlFor="duration">Duration:</label><input type="number" value={duration} onChange={this._onDurationChange}/></div>
         <div><input style={{width: '120px'}} type="button" value={btnText} onClick={this._onStop}/></div>
-        <div><input style={{width: '120px'}} type="button" value="Reset to start" disabled={isRunning} onClick={this._onReset}/></div>
+        <div><input style={{width: '120px'}} type="button" value="Reset to start" disabled={!showReset && isRunning} onClick={this._onReset}/></div>
       </div>
     );
   }

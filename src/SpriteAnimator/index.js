@@ -46,11 +46,18 @@ export default class SpriteAnimator extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.numOfFrames !== this.props.numOfFrames) {
+      this.start();
+    }
+  }
+
   componentWillUnmount() {
     cancelAnimationFrame(this._animationFrame);
   }
 
   start() {
+    this._animationStart = null;
     this._playAnimation();
   }
 
