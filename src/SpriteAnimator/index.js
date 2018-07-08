@@ -17,7 +17,8 @@ export default class SpriteAnimator extends React.Component {
     children: PropTypes.node,
     getPosition: PropTypes.func,
     numOfFrames: PropTypes.number,
-    onSequenceEnd: PropTypes.func
+    onSequenceEnd: PropTypes.func,
+    onAnimationStop: PropTypes.func
   };
 
   static defaultProps = {
@@ -27,7 +28,8 @@ export default class SpriteAnimator extends React.Component {
     children: [],
     numOfFrames: 0,
     getPosition: () => ({}),
-    onSequenceEnd: () => {}
+    onSequenceEnd: () => {},
+    onAnimationStop: () => {}
   };
 
   constructor() {
@@ -62,7 +64,9 @@ export default class SpriteAnimator extends React.Component {
   }
 
   stop() {
+    const {onAnimationStop} = this.props;
     cancelAnimationFrame(this._animationFrame);
+    onAnimationStop();
   }
 
   reset() {
@@ -86,7 +90,7 @@ export default class SpriteAnimator extends React.Component {
   }
 
   _onAnimate(timestamp) {
-    const {numOfFrames, loop, easing, duration, onSequenceEnd} = this.props;
+    const {numOfFrames, loop, easing, duration, onSequenceEnd, onAnimationStop} = this.props;
 
     if (!this._animationStart) {
       this._animationStart = timestamp;
@@ -109,6 +113,8 @@ export default class SpriteAnimator extends React.Component {
       this.setState({frame: nextFrame}, () => {
         this._playAnimation();
       });
+    } else {
+      onAnimationStop();
     }
   }
 }
