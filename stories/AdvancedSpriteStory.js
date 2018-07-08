@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import autoBind from 'react-autobind';
 import SpriteAnimator from '../src/SpriteAnimator';
@@ -107,3 +108,4 @@ storiesOf('Animations', module)
   .add('Advanced Sprite Animator', () => (
     <AdvancedSpriteStory/>
   ));
+/* eslint-enable */
