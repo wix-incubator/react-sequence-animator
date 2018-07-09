@@ -4,8 +4,8 @@ import autoBind from 'react-autobind';
 import SpriteAnimator from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
 
-const sprite = require('./statics/CSV_Export_Sprite_2.png');
-const SWITCH_FRAME = 16;
+const sprite = require('./statics/CSV_Export_Sprite.png');
+const SWITCH_FRAME = 15;
 const WIDTH = 300;
 const HEIGHT = 150;
 const ANIMATION_TYPES = {
