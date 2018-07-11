@@ -1,5 +1,5 @@
 # react-sequence-animator
-This is a supper simple React library that lets us to create animations in an easy and straight forward manner.
+This is a supper simple React library that lets us create animations in an easy and straight forward manner.
 
 I wrote this library in order to have animations that can be controlled very easily.
 
