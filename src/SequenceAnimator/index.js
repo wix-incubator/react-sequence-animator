@@ -15,17 +15,17 @@ export default class SequenceAnimator extends Component {
   static propTypes = {
     autoplay: PropTypes.bool,
     duration: PropTypes.number,
-    delay: PropTypes.number,
     loop: PropTypes.bool,
     easing: PropTypes.oneOf(Object.keys(Easings)),
+    onSequenceEnd: PropTypes.func,
     children: PropTypes.oneOfType([
       React.PropTypes.arrayOf(React.PropTypes.node),
       React.PropTypes.node
-    ]),
-    onSequenceEnd: PropTypes.func
+    ])
   };
 
   static defaultProps = {
+    duration: 1000,
     autoplay: true,
     easing: 'linear',
     loop: true,

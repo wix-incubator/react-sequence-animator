@@ -5,17 +5,18 @@ import PropTypes from 'prop-types';
 import styles from './SpriteAnimator.scss';
 import {ease} from '../SequenceAnimator';
 
+const DEFAULT_POSITION = {top: 0, left: 0, width: '100%', height: '100%'};
+
 export default class SpriteAnimator extends React.Component {
   static displayName = 'SpriteAnimator';
 
   static propTypes = {
     autoplay: PropTypes.bool,
     duration: PropTypes.number,
-    delay: PropTypes.number,
     loop: PropTypes.bool,
     easing: PropTypes.oneOf(Object.keys(Easings)),
     children: PropTypes.node,
-    getPosition: PropTypes.func,
+    getPosition: PropTypes.func.isRequired,
     numOfFrames: PropTypes.number,
     onSequenceEnd: PropTypes.func,
     onAnimationStop: PropTypes.func
@@ -27,7 +28,7 @@ export default class SpriteAnimator extends React.Component {
     loop: true,
     children: [],
     numOfFrames: 0,
-    getPosition: () => ({}),
+    getPosition: () => DEFAULT_POSITION,
     onSequenceEnd: () => {},
     onAnimationStop: () => {}
   };
