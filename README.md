@@ -3,7 +3,7 @@ This is a supper simple React library that lets us create animations in an easy 
 
 I wrote this library in order to have animations that can be controlled very easily.
 
-For example, a loader that transitions to a *success* or *fail* mode smoothly:
+For example, a loader that has smooth transitions to a *success* and *fail* mode:
 
 ![Advanced Sequence Animation](./AdvancedSequenceAnimator.gif?raw=true "Advanced Sequence Animation")
 
