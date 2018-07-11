@@ -5,7 +5,6 @@ import SpriteAnimator from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
 
 const sprite = require('./statics/CSV_Export_Sprite.png');
-const SWITCH_FRAME = 15;
 const WIDTH = 300;
 const HEIGHT = 150;
 const ANIMATION_TYPES = {
@@ -53,17 +52,15 @@ class AdvancedSpriteStory extends React.Component {
 
   _getPosition(frame) {
     const {type} = this.state;
-    let top = ((frame + SWITCH_FRAME) % 24) * HEIGHT;
+    const top = (frame % 24) * HEIGHT;
     let left = 0;
 
     switch (type) {
-      case ANIMATION_TYPES.EXPORT:
-        break;
       case ANIMATION_TYPES.ERROR:
-        left += WIDTH;
+        left = 2 * WIDTH;
+        break;
       case ANIMATION_TYPES.SUCCESS:
-        left += WIDTH;
-        top = (frame % 24) * HEIGHT;
+        left = WIDTH;
         break;
     }
 
