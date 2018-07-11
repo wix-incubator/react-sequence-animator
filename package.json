@@ -39,6 +39,7 @@
     "react-dom": "15.6.1",
     "react-test-renderer": "~15.6.0",
     "teamcity-surge-autorelease": "^1.0.3",
+    "wix-style-react": "^4.9.0",
     "yoshi": "^2.1.2"
   },
   "yoshi": {

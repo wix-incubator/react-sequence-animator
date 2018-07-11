@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import autoBind from 'react-autobind';
+import Button from 'wix-style-react/Button';
 import SpriteAnimator from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
 
@@ -27,7 +28,7 @@ class AdvancedSpriteStory extends React.Component {
     const {type} = this.state;
 
     return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start'}}>
         <SpriteAnimator
           autoplay
           duration={800}
@@ -36,12 +37,14 @@ class AdvancedSpriteStory extends React.Component {
           loop={type === ANIMATION_TYPES.EXPORT}
           onSequenceEnd={this._onSequenceEnd}
           ref={this._elRef}
-          >
+        >
           <img src={sprite} alt="1" width={WIDTH * 3} height={HEIGHT * 24}/>
         </SpriteAnimator>
-        <div><button onClick={this._onError} disabled={type !== ANIMATION_TYPES.EXPORT}>Error</button></div>
-        <div><button onClick={this._onSuccess} disabled={type !== ANIMATION_TYPES.EXPORT}>Success</button></div>
-        <div><button onClick={this._reset} disabled={type === ANIMATION_TYPES.EXPORT}>Reset</button></div>
+        <div style={{marginTop: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+          <span style={{marginBottom: 6}}><Button height={'small'} onClick={this._onError} disabled={type !== ANIMATION_TYPES.EXPORT}>Error</Button></span>
+          <span style={{marginBottom: 6}}><Button height={'small'} onClick={this._onSuccess} disabled={type !== ANIMATION_TYPES.EXPORT}>Success</Button></span>
+          <span><Button height={'small'} onClick={this._reset} disabled={type === ANIMATION_TYPES.EXPORT}>Reset</Button></span>
+        </div>
       </div>
     );
   }
