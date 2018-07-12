@@ -10,8 +10,6 @@ For example, a loader that has smooth transitions to a *success* and *fail* mode
 ## How to Install
 ```sh
 npm install --save react-sequence-animator
-# OR
-yarn add react-sequence-animator
 ```
 
 ## What You Get
