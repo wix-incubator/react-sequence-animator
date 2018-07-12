@@ -69,7 +69,7 @@ The `SpriteAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-##### Notice: There's no restriction of the type of element the child should be. It can also be an SVG or even a react component
+##### Notice: There's no restriction on the type of element the child should be. It can also be an SVG or even a react component or a div
 
 #### API
 `play` - Plays the animation (from the current frame)
@@ -122,9 +122,7 @@ The `SequenceAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-##### Notice: There's no restriction of the type of element the children should be. They can also be SVG's or even a react components
-
-##### Notice: The children aren't restricted to being an image component. They can also be SVG's or even divs
+##### Notice: There's no restriction on the types of elements the children should be. They can also be SVG's or even react components or divs
 
 #### API
 `play` - Plays the animation (from the current frame)
