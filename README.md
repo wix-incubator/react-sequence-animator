@@ -69,7 +69,7 @@ The `SpriteAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-#### Notice there's no restriction of the type of element the child should be. It can also be an SVG or even a react component
+#### Notice: There's no restriction of the type of element the child should be. It can also be an SVG or even a react component
 
 
 ### `SequenceAnimator`
@@ -115,8 +115,29 @@ The `SequenceAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-#### Notice there's no restriction of the type of element the children should be. They can also be SVG's or even a react components
+#### Notice: There's no restriction of the type of element the children should be. They can also be SVG's or even a react components
 
-#### Notice the children aren't restricted to being an image component. They can also be SVG's or even divs
+#### Notice: The children aren't restricted to being an image component. They can also be SVG's or even divs
 
 ## Easing
+The components can apply to the animations, easings as described in the library [easing-utils](https://github.com/AndrewRayCode/easing-utils).
+
+It was initially introduced in order to allow control of the animation's duration (using the linear easing), but other easings may be applied.
+
+It is recommended to use easings only on linear animations.
+
+#### Notice: When using easings other than *linear*, we cannot be assured that all frames will be played
+
+### Example:
+
+![Ball Easing Example](./BallEasingAnimation.gif?raw=true "Ball Easing Example")
+
+The right animation is played with a linear easing; A ball falling in a constant velocity.
+
+Adding the easing `easeOutBounce` gives us the feeling of a ball in free fall, and bouncing after hitting the ground (left animation).
+
+Notice how the eased animation (on the left) isn't as smooth as the linear animation.
+
+That happens because the `easeOutBounce` skips some frames at the end.
+
+In order to achieve a smoother animation, we would have needed much more frames (which really isn't cost effective).
