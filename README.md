@@ -18,8 +18,10 @@ The library has two components:
 `SpriteAnimator` and `SequenceAnimator`.
 
 ### `SpriteAnimator`
-The `SpriteAnimator` receives one child, which it respects as a sprite image, a `getPosition` function, which for every frame number
-should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`, and the number of frames in the sequence.
+
+The `SpriteAnimator` receives one child, which it respects as a sprite image, a `getPosition` function,   
+which for every frame number should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`,  
+and the number of frames in the sequence.
 
 In order to use this component you should know where each frame is located in the sprite image.
 
@@ -67,7 +69,14 @@ The `SpriteAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-#### Notice: There's no restriction of the type of element the child should be. It can also be an SVG or even a react component
+##### Notice: There's no restriction of the type of element the child should be. It can also be an SVG or even a react component
+
+#### API
+`play` - Plays the animation (from the current frame)
+  
+`stop` - Stops the animation  
+
+`reset` - Resets the animation to the first frame (0)
 
 
 ### `SequenceAnimator`
@@ -113,9 +122,16 @@ The `SequenceAnimator` receives several props:
 |`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
 |`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
 
-#### Notice: There's no restriction of the type of element the children should be. They can also be SVG's or even a react components
+##### Notice: There's no restriction of the type of element the children should be. They can also be SVG's or even a react components
 
-#### Notice: The children aren't restricted to being an image component. They can also be SVG's or even divs
+##### Notice: The children aren't restricted to being an image component. They can also be SVG's or even divs
+
+#### API
+`play` - Plays the animation (from the current frame)
+  
+`stop` - Stops the animation  
+
+`reset` - Resets the animation to the first frame (0)
 
 ## Easing
 The components can apply to the animations, easings as described in the library [easing-utils](https://github.com/AndrewRayCode/easing-utils).
