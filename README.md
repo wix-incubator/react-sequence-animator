@@ -19,8 +19,8 @@ The library has two components:
 
 ### `SpriteAnimator`
 
-The `SpriteAnimator` receives one child, which it respects as a sprite image, a `getPosition` function,   
-which for every frame number should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`,  
+The `SpriteAnimator` receives one child, which it respects as a sprite image, a `getPosition` function,
+which for every frame number should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`,
 and the number of frames in the sequence.
 
 In order to use this component you should know where each frame is located in the sprite image.
