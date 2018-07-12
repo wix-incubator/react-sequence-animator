@@ -132,6 +132,8 @@ It is recommended to use easings only on linear animations.
 
 ![Ball Easing Example](./BallEasingAnimation.gif?raw=true "Ball Easing Example")
 
+Both of the basketball animations above use the same sequence of images.
+
 The right animation is played with a linear easing; A ball falling in a constant velocity.
 
 Adding the easing `easeOutBounce` gives us the feeling of a ball in free fall, and bouncing after hitting the ground (left animation).
