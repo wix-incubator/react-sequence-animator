@@ -104,7 +104,7 @@ class AdvancedSpriteStory extends React.Component {
   }
 }
 
-storiesOf('Animations', module)
+storiesOf('Animations')
   .add('Advanced Sprite Animator', () => (
     <AdvancedSpriteStory/>
   ));

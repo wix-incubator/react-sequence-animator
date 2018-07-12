@@ -18,6 +18,7 @@ export default class SequenceAnimator extends Component {
     loop: PropTypes.bool,
     easing: PropTypes.oneOf(Object.keys(Easings)),
     onSequenceEnd: PropTypes.func,
+    onAnimationStop: PropTypes.func,
     children: PropTypes.oneOfType([
       React.PropTypes.arrayOf(React.PropTypes.node),
       React.PropTypes.node
@@ -30,7 +31,8 @@ export default class SequenceAnimator extends Component {
     easing: 'linear',
     loop: true,
     children: [],
-    onSequenceEnd: () => {}
+    onSequenceEnd: () => {},
+    onAnimationStop: () => {}
   };
 
   constructor() {
@@ -85,7 +87,7 @@ export default class SequenceAnimator extends Component {
   }
 
   _onAnimate(timestamp) {
-    const {onSequenceEnd, children, loop, easing, duration} = this.props;
+    const {onSequenceEnd, onAnimationStop, children, loop, easing, duration} = this.props;
     const childrenArr = React.Children.toArray(children);
 
     if (!this._animationStart) {
@@ -109,6 +111,8 @@ export default class SequenceAnimator extends Component {
       this.setState({frame: nextFrame}, () => {
         this._playAnimation();
       });
+    } else {
+      onAnimationStop();
     }
   }
 }

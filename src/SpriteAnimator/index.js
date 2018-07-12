@@ -26,7 +26,6 @@ export default class SpriteAnimator extends React.Component {
     autoplay: true,
     easing: 'linear',
     loop: true,
-    children: [],
     numOfFrames: 0,
     getPosition: () => DEFAULT_POSITION,
     onSequenceEnd: () => {},

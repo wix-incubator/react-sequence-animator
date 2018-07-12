@@ -1,12 +1,11 @@
 # react-sequence-animator
 This is a supper simple React library that lets us create animations in an easy and straight forward manner.
 
-I wrote this library in order to have animations that can be controlled very easily.
+The idea behind this library was to create animations that can be controlled very easily.
 
 For example, a loader that has smooth transitions to a *success* and *fail* mode:
 
 ![Advanced Sequence Animation](./AdvancedSequenceAnimator.gif?raw=true "Advanced Sequence Animation")
-
 
 ## How to Install
 ```sh
@@ -21,10 +20,57 @@ The library has two components:
 `SpriteAnimator` and `SequenceAnimator`.
 
 ### `SpriteAnimator`
-The `SpriteAnimator` receives one child, which it respects as a sprite image, and a `getPosition` function, which for every frame number
-should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`;
+The `SpriteAnimator` receives one child, which it respects as a sprite image, a `getPosition` function, which for every frame number
+should return a position object of the form: `{top: 0, left: 0, width: 100, height: 100}`, and the number of frames in the sequence.
 
 In order to use this component you should know where each frame is located in the sprite image.
+
+```javascript
+const sprite = require('./sprites-cat-running.png');
+const WIDTH = 512;
+const HEIGHT = 256;
+
+class SpriteAnimatorStory extends React.Component {
+  constructor() {
+    super();
+    this._getPosition = this._getPosition.bind(this);
+  }
+
+  render() {
+    return (
+      <SpriteAnimator autoplay numOfFrames={8} getPosition={this._getPosition}>
+        <img src={sprite} alt="my-sprite" width={WIDTH * 4} height={HEIGHT * 2}/>
+      </SpriteAnimator>
+    );
+  }
+
+  _getPosition(frame) {
+    return {
+      width: WIDTH,
+      height: HEIGHT,
+      top: (frame < 4) ? 0 : HEIGHT,
+      left: (frame % 4) * WIDTH
+    };
+  }
+}
+```
+
+The `SpriteAnimator` receives several props:
+
+|Name|Type|default|Description|
+|:---|:---|:---|:---|
+|`children`| a single node | --- | the sprite to be "played"
+|`getPosition`| function | () => {top: 0, left: 0, width: '100%', height: '100%'} | a function that is called for each frame and should return the position of the frame in the sprite
+|`numOfFrames`| number | 0 | the number of frames in the animation
+|`autoplay`| bool | true | should play automatically or not
+|`duration`| number | 1000 | the duration in milliseconds of the animation
+|`loop`| bool | true | should play in a loop
+|`easing`| string | 'linear' | the easing of the animation (read more about this [here](#easing))
+|`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
+|`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
+
+#### Notice there's no restriction of the type of element the child should be. It can also be an SVG or even a react component
+
 
 ### `SequenceAnimator`
 The `SequenceAnimator` receives a sequence of images as its children, and *"plays"* them one after the other.
@@ -61,12 +107,15 @@ The `SequenceAnimator` receives several props:
 
 |Name|Type|default|Description|
 |:---|:---|:---|:---|
+|`children`| node or array of nodes | [] | the nodes to be "played"
 |`autoplay`| bool | true | should play automatically or not
 |`duration`| number | 1000 | the duration in milliseconds of the animation
 |`loop`| bool | true | should play in a loop
 |`easing`| string | 'linear' | the easing of the animation (read more about this [here](#easing))
-|`onSequenceEnd`| func | --- | a callback function that is called each time the sequence reached its end
-|`children`| node or array of nodes | --- | the nodes to be "played"
+|`onSequenceEnd`| func | () => {} | a callback function that is called each time the sequence reached its end
+|`onAnimationStop`| func | () => {} | a callback function that is called when the animation stops completely
+
+#### Notice there's no restriction of the type of element the children should be. They can also be SVG's or even a react components
 
 #### Notice the children aren't restricted to being an image component. They can also be SVG's or even divs
 
