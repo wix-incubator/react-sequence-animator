@@ -20,8 +20,8 @@ export default class SequenceAnimator extends Component {
     onSequenceEnd: PropTypes.func,
     onAnimationStop: PropTypes.func,
     children: PropTypes.oneOfType([
-      React.PropTypes.arrayOf(React.PropTypes.node),
-      React.PropTypes.node
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
     ])
   };
 

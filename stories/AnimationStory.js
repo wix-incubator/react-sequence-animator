@@ -7,8 +7,8 @@ export default class AnimationStory extends React.Component {
 
   static propTypes = {
     children: PropTypes.oneOfType([
-      React.PropTypes.arrayOf(React.PropTypes.node),
-      React.PropTypes.node
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
     ]),
     showReset: PropTypes.bool,
     duration: PropTypes.number
