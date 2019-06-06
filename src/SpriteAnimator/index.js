@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Easings from 'easing-utils';
-import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 import styles from './SpriteAnimator.scss';
 import {ease} from '../SequenceAnimator';
@@ -37,7 +36,6 @@ export default class SpriteAnimator extends React.Component {
     this.state = {
       frame: 0
     };
-    autoBind(this);
   }
 
   componentDidMount() {
@@ -85,11 +83,11 @@ export default class SpriteAnimator extends React.Component {
     );
   }
 
-  _playAnimation() {
+  _playAnimation = () => {
     this._animationFrame = requestAnimationFrame(this._onAnimate);
-  }
+  };
 
-  _onAnimate(timestamp) {
+  _onAnimate = timestamp => {
     const {numOfFrames, loop, easing, duration, onSequenceEnd, onAnimationStop} = this.props;
 
     if (!this._animationStart) {

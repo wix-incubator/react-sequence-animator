@@ -1,7 +1,7 @@
 {
   "name": "react-sequence-animator",
   "version": "1.0.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": {
     "name": "Jonathan Adler",
     "email": "jonathana@wix.com"
@@ -13,7 +13,7 @@
     "!wallaby.js"
   ],
   "publishConfig": {
-    "registry": "http://npm.dev.wixpress.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "precommit": "yoshi lint",
@@ -21,8 +21,8 @@
     "test": "yoshi test",
     "posttest": "yoshi lint",
     "start": "yoshi start & npm run storybook",
-    "release": "yoshi release && teamcity-surge-autorelease --dist=storybook-static",
-    "pr-release": "teamcity-surge-autorelease --dist=storybook-static",
+    "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006"
   },
   "devDependencies": {
@@ -42,7 +42,6 @@
     "react-dom": "15.6.1",
     "react-test-renderer": "~15.6.0",
     "storybook-readme": "^3.3.0",
-    "teamcity-surge-autorelease": "^1.0.3",
     "wix-style-react": "^4.9.0",
     "yoshi": "^2.1.2"
   },
@@ -58,10 +57,16 @@
   },
   "module": "dist/es/src/index.js",
   "dependencies": {
-    "babel-runtime": "~6.25.0",
-    "easing-utils": "0.0.7",
-    "react-autobind": "^1.0.6"
+    "easing-utils": "0.0.7"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wix-incubator/react-sequence-animator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wix-incubator/react-sequence-animator/issues"
+  },
+  "homepage": "https://github.com/wix-incubator/react-sequence-animator#readme",
   "babel": {
     "plugins": [
       "transform-runtime"

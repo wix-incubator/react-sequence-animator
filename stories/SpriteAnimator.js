@@ -1,5 +1,4 @@
 import React from 'react';
-import autoBind from 'react-autobind';
 import SpriteAnimator from '../src/SpriteAnimator';
 import AnimationStory from './AnimationStory';
 import {storiesOf} from '@storybook/react';
@@ -9,12 +8,6 @@ const WIDTH = 512;
 const HEIGHT = 256;
 
 class SpriteAnimatorStory extends React.Component {
-  constructor() {
-    super();
-    autoBind(this);
-    this._getPosition = this._getPosition.bind(this);
-  }
-
   render() {
     return (
       <AnimationStory>
@@ -25,14 +18,14 @@ class SpriteAnimatorStory extends React.Component {
     );
   }
 
-  _getPosition(frame) {
+  _getPosition = frame => {
     return {
       width: WIDTH,
       height: HEIGHT,
       top: (frame < 4) ? 0 : HEIGHT,
       left: (frame % 4) * WIDTH
     };
-  }
+  };
 }
 
 storiesOf('Animations', module)

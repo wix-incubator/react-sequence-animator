@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import autoBind from 'react-autobind';
 
 export default class AnimationStory extends React.Component {
   static displayName = 'AnimationStory';
@@ -20,7 +19,6 @@ export default class AnimationStory extends React.Component {
       duration: props.duration || 600,
       isRunning: true
     };
-    autoBind(this);
   }
 
   render() {
@@ -38,11 +36,11 @@ export default class AnimationStory extends React.Component {
     );
   }
 
-  _elemRef(el) {
+  _elemRef = el => {
     this._elem = el;
-  }
+  };
 
-  _onStop() {
+  _onStop = () => {
     const {isRunning} = this.state;
 
     if (this._elem) {
@@ -54,16 +52,16 @@ export default class AnimationStory extends React.Component {
     }
 
     this.setState({isRunning: !isRunning});
-  }
+  };
 
-  _onReset() {
+  _onReset = () => {
     if (this._elem) {
       this._elem.reset();
     }
-  }
+  };
 
-  _onDurationChange(e) {
+  _onDurationChange = e => {
     const {target} = e;
     this.setState({duration: target.value});
-  }
+  };
 }

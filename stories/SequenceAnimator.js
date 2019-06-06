@@ -1,5 +1,4 @@
 import React from 'react';
-import autoBind from 'react-autobind';
 import SequenceAnimator from '../src/SequenceAnimator/index.js';
 import AnimationStory from './AnimationStory';
 import {storiesOf} from '@storybook/react';
@@ -14,11 +13,6 @@ const cat7 = require('./statics/cat7.png');
 const cat8 = require('./statics/cat8.png');
 
 class SequenceAnimatorStory extends React.Component {
-  constructor() {
-    super();
-    autoBind(this);
-  }
-
   render() {
     return (
       <AnimationStory>

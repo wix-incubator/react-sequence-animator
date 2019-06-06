@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import autoBind from 'react-autobind';
 import Button from 'wix-style-react/Button';
 import SpriteAnimator from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
@@ -17,7 +16,6 @@ const ANIMATION_TYPES = {
 class AdvancedSpriteStory extends React.Component {
   constructor() {
     super();
-    autoBind(this);
     this.state = {
       type: ANIMATION_TYPES.EXPORT,
       updateTo: null
@@ -49,11 +47,11 @@ class AdvancedSpriteStory extends React.Component {
     );
   }
 
-  _elRef(el) {
+  _elRef = el => {
     this._elem = el;
-  }
+  };
 
-  _getPosition(frame) {
+  _getPosition = frame => {
     const {type} = this.state;
     const top = (frame % 24) * HEIGHT;
     let left = 0;
@@ -73,25 +71,25 @@ class AdvancedSpriteStory extends React.Component {
       top,
       left
     };
-  }
+  };
 
-  _onSequenceEnd() {
+  _onSequenceEnd = () => {
     const {updateTo} = this.state;
 
     if (updateTo) {
       this.setState({type: updateTo, updateTo: null});
     }
-  }
+  };
 
-  _onError() {
+  _onError = () => {
     this.setState({updateTo: ANIMATION_TYPES.ERROR});
-  }
+  };
 
-  _onSuccess() {
+  _onSuccess = () => {
     this.setState({updateTo: ANIMATION_TYPES.SUCCESS});
-  }
+  };
 
-  _reset() {
+  _reset = () => {
     if (this._elem) {
       this._elem.stop();
       this._elem.reset();
@@ -101,7 +99,7 @@ class AdvancedSpriteStory extends React.Component {
         this._elem.start();
       }
     });
-  }
+  };
 }
 
 storiesOf('Animations')

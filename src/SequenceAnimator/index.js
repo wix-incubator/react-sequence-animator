@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import * as Easings from 'easing-utils';
-import autoBind from 'react-autobind';
 
 function doEase(pos, start, end) {
   return start + ((end - start) * pos);
@@ -40,7 +39,6 @@ export default class SequenceAnimator extends Component {
     this.state = {
       frame: 0
     };
-    autoBind(this);
   }
 
   componentDidMount() {
@@ -74,19 +72,19 @@ export default class SequenceAnimator extends Component {
     );
   }
 
-  _getFrame() {
+  _getFrame = () => {
     const {frame} = this.state;
     const {children} = this.props;
     const childrenArr = React.Children.toArray(children);
 
     return (childrenArr.length >= frame) ? childrenArr[frame] : null;
-  }
+  };
 
-  _playAnimation() {
+  _playAnimation = () => {
     this._animationFrame = requestAnimationFrame(this._onAnimate);
-  }
+  };
 
-  _onAnimate(timestamp) {
+  _onAnimate = timestamp => {
     const {onSequenceEnd, onAnimationStop, children, loop, easing, duration} = this.props;
     const childrenArr = React.Children.toArray(children);
 
