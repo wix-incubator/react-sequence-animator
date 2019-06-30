@@ -3,7 +3,7 @@ import SpriteAnimator from '../src/SpriteAnimator';
 import AnimationStory from './AnimationStory';
 import {storiesOf} from '@storybook/react';
 
-const sprite = require('./statics/sprites-cat-running.png');
+const sprite = require(/* webpackPrefetch: true */'./statics/sprites-cat-running.png');
 const WIDTH = 512;
 const HEIGHT = 256;
 

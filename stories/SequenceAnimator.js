@@ -3,14 +3,14 @@ import SequenceAnimator from '../src/SequenceAnimator/index.js';
 import AnimationStory from './AnimationStory';
 import {storiesOf} from '@storybook/react';
 
-const cat1 = require('./statics/cat1.png');
-const cat2 = require('./statics/cat2.png');
-const cat3 = require('./statics/cat3.png');
-const cat4 = require('./statics/cat4.png');
-const cat5 = require('./statics/cat5.png');
-const cat6 = require('./statics/cat6.png');
-const cat7 = require('./statics/cat7.png');
-const cat8 = require('./statics/cat8.png');
+const cat1 = require(/* webpackPrefetch: true */'./statics/cat1.png');
+const cat2 = require(/* webpackPrefetch: true */'./statics/cat2.png');
+const cat3 = require(/* webpackPrefetch: true */'./statics/cat3.png');
+const cat4 = require(/* webpackPrefetch: true */'./statics/cat4.png');
+const cat5 = require(/* webpackPrefetch: true */'./statics/cat5.png');
+const cat6 = require(/* webpackPrefetch: true */'./statics/cat6.png');
+const cat7 = require(/* webpackPrefetch: true */'./statics/cat7.png');
+const cat8 = require(/* webpackPrefetch: true */'./statics/cat8.png');
 
 class SequenceAnimatorStory extends React.Component {
   render() {

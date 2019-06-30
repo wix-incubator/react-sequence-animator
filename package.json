@@ -37,6 +37,7 @@
     "jsdom": "~11.1.0",
     "lodash": "^4.17.10",
     "markdown-loader": "^3.0.0",
+    "preload-webpack-plugin": "^3.0.0-beta.3",
     "prop-types": "^15.6.2",
     "react": "15.6.1",
     "react-dom": "15.6.1",

@@ -4,7 +4,7 @@ import Button from 'wix-style-react/Button';
 import SpriteAnimator from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
 
-const sprite = require('./statics/CSV_Export_Sprite.png');
+const sprite = require(/* webpackPrefetch: true */'./statics/CSV_Export_Sprite.png');
 const WIDTH = 300;
 const HEIGHT = 150;
 const ANIMATION_TYPES = {
