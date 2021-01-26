@@ -21,6 +21,7 @@
     "test": "yoshi test",
     "posttest": "yoshi lint",
     "start": "yoshi start & npm run storybook",
+    "release": "npx yoshi release && npx teamcity-surge-autorelease@^1.0.0",
     "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006"
