@@ -44,7 +44,7 @@
     "react-test-renderer": "~15.6.0",
     "storybook-readme": "^3.3.0",
     "wix-style-react": "^4.9.0",
-    "yoshi": "^2.1.2"
+    "@wix/yoshi": "^2.1.2"
   },
   "yoshi": {
     "entry": {
