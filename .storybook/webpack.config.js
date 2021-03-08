@@ -1,4 +1,4 @@
-const yoshiWebpackConfig = require('yoshi/config/webpack.config.storybook');
+const yoshiWebpackConfig = require('@wix/yoshi/config/webpack.config.storybook');
 const remove = require('lodash/remove');
 
 module.exports = (config, env, defaultConfig) => {
