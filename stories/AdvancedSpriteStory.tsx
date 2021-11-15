@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import Button from 'wix-style-react/Button';
-import SpriteAnimator from '../src/SpriteAnimator';
+import { SpriteAnimator } from '../src/SpriteAnimator';
 import {storiesOf} from '@storybook/react';
 
 const sprite = require('./statics/CSV_Export_Sprite.png');
@@ -13,7 +13,9 @@ const ANIMATION_TYPES = {
   SUCCESS: 'success'
 };
 
-class AdvancedSpriteStory extends React.Component {
+type AdvancedSpriteStoryState
+
+class AdvancedSpriteStory extends React.Component<never, AdvancedSpriteStoryState> {
   constructor() {
     super();
     this.state = {

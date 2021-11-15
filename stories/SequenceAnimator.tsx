@@ -1,7 +1,7 @@
 import React from 'react';
-import SequenceAnimator from '../src/SequenceAnimator/index.js';
+import { SequenceAnimator } from '../src/SequenceAnimator';
 import AnimationStory from './AnimationStory';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
 const cat1 = require('./statics/cat1.png');
 const cat2 = require('./statics/cat2.png');
@@ -17,21 +17,20 @@ class SequenceAnimatorStory extends React.Component {
     return (
       <AnimationStory>
         <SequenceAnimator autoplay>
-          <img src={cat1} alt="1"/>
-          <img src={cat2} alt="2"/>
-          <img src={cat3} alt="3"/>
-          <img src={cat4} alt="4"/>
-          <img src={cat5} alt="5"/>
-          <img src={cat6} alt="6"/>
-          <img src={cat7} alt="7"/>
-          <img src={cat8} alt="8"/>
+          <img src={cat1} alt="1" />
+          <img src={cat2} alt="2" />
+          <img src={cat3} alt="3" />
+          <img src={cat4} alt="4" />
+          <img src={cat5} alt="5" />
+          <img src={cat6} alt="6" />
+          <img src={cat7} alt="7" />
+          <img src={cat8} alt="8" />
         </SequenceAnimator>
       </AnimationStory>
     );
   }
 }
 
-storiesOf('Animations', module)
-  .add('Sequence Animator', () => (
-    <SequenceAnimatorStory/>
-  ));
+storiesOf('Animations', module).add('Sequence Animator', () => (
+  <SequenceAnimatorStory />
+));

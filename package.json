@@ -1,85 +1,92 @@
 {
-  "name": "react-sequence-animator",
-  "version": "1.0.0",
+  "name": "@wix/react-sequence-animator",
+  "version": "2.0.0",
   "license": "MIT",
   "author": {
     "name": "Jonathan Adler",
     "email": "jonathana@wix.com"
   },
-  "main": "dist/src/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "dist",
-    "*.js",
-    "!wallaby.js"
+    "dist"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.dev.wixpress.com/",
+    "versionBumpStrategy": "minor"
   },
   "scripts": {
-    "precommit": "yoshi lint",
-    "pretest": "yoshi build && build-storybook && import-path --path ./src",
-    "test": "yoshi test",
-    "posttest": "yoshi lint",
-    "start": "yoshi start & npm run storybook",
-    "release": "npx yoshi release && npx teamcity-surge-autorelease@^1.0.0",
-    "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
-    "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
-    "storybook": "start-storybook -p 6006"
+    "build": "yoshi-library build",
+    "start": "start-storybook -p 6006",
+    "test": "yoshi-library test",
+    "lint": "yoshi-library lint",
+    "posttest": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "npm run lint"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "easing-utils": "0.0.7",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@storybook/react": "4.0.0-alpha.14",
     "@storybook/storybook-deployer": "~2.0.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.0.0",
+    "@types/react": "^16.14.11",
+    "@types/react-dom": "^16.9.14",
+    "@wix/jest-yoshi-preset": "^5.0.0",
+    "@wix/yoshi-flow-library": "^5.0.0",
     "babel-plugin-transform-runtime": "~6.23.0",
     "chai": "~4.1.0",
     "enzyme": "~2.9.0",
     "html-loader": "^0.5.5",
-    "husky": "~0.14.0",
+    "husky": "~4.2.1",
     "import-path": "^1.0.2",
     "jsdom": "~11.1.0",
+    "lint-staged": "^10.0.7",
     "lodash": "^4.17.10",
     "markdown-loader": "^3.0.0",
-    "prop-types": "^15.6.2",
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
-    "react-test-renderer": "~15.6.0",
+    "react": "^16.14.11",
+    "react-dom": "^16.9.14",
     "storybook-readme": "^3.3.0",
-    "wix-style-react": "^4.9.0",
-    "@wix/yoshi": "^2.1.2"
+    "ts-jest": "^26.4.4",
+    "typescript": "~4.1.2",
+    "wix-style-react": "^4.9.0"
   },
-  "yoshi": {
-    "entry": {
-      "app": "index.js"
-    },
-    "externals": {
-      "react": "React",
-      "react-dom": "ReactDOM"
-    },
-    "hmr": "auto"
+  "yoshiLibraryFlow": {
+    "bundle": {
+      "entry": {
+        "app": "index.js"
+      },
+      "externals": {
+        "react": "React",
+        "react-dom": "ReactDOM"
+      },
+      "hmr": "auto"
+    }
   },
-  "module": "dist/es/src/index.js",
-  "dependencies": {
-    "easing-utils": "0.0.7"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wix-incubator/react-sequence-animator.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wix-incubator/react-sequence-animator/issues"
-  },
-  "homepage": "https://github.com/wix-incubator/react-sequence-animator#readme",
-  "babel": {
-    "plugins": [
-      "transform-runtime"
-    ],
-    "presets": [
-      "wix"
-    ]
+  "jest": {
+    "preset": "@wix/jest-yoshi-preset"
   },
   "eslintConfig": {
-    "extends": "wix/react",
-    "rules": {
-      "react/jsx-handler-names": "off"
+    "extends": "@wix/eslint-config-yoshi"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress",
+      "artifactId": "react-sequence-animator"
     }
+  },
+  "wallaby": {
+    "autoDetect": true
   }
 }
