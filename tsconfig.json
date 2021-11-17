@@ -6,7 +6,12 @@
     "jsx": "react",
     "declarationDir": "dist/types",
     "esModuleInterop": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "tslib": ["./node_modules/tslib"],
+    }
   },
   "include": [
     "src"

@@ -5,7 +5,7 @@ The idea behind this library was to create animations that can be controlled ver
 
 For example, a loader that has smooth transitions to a *success* and *fail* mode:
 
-![Advanced Sequence Animation](./AdvancedSequenceAnimator.gif?raw=true "Advanced Sequence Animation")
+![Advanced Sequence Animation](./statics/AdvancedSequenceAnimator.gif?raw=true "Advanced Sequence Animation")
 
 ## How to Install
 ```sh
@@ -26,7 +26,8 @@ and the number of frames in the sequence.
 In order to use this component you should know where each frame is located in the sprite image.
 
 ```javascript
-const sprite = require('./sprites-cat-running.png');
+import sprite from './sprites-cat-running.png';
+
 const WIDTH = 512;
 const HEIGHT = 256;
 
@@ -73,8 +74,8 @@ The `SpriteAnimator` receives several props:
 
 #### API
 `play` - Plays the animation (from the current frame)
-  
-`stop` - Stops the animation  
+
+`stop` - Stops the animation
 
 `reset` - Resets the animation to the first frame (0)
 
@@ -83,14 +84,14 @@ The `SpriteAnimator` receives several props:
 The `SequenceAnimator` receives a sequence of images as its children, and *"plays"* them one after the other.
 
 ```javascript
-const cat1 = require('./statics/cat1.png');
-const cat2 = require('./statics/cat2.png');
-const cat3 = require('./statics/cat3.png');
-const cat4 = require('./statics/cat4.png');
-const cat5 = require('./statics/cat5.png');
-const cat6 = require('./statics/cat6.png');
-const cat7 = require('./statics/cat7.png');
-const cat8 = require('./statics/cat8.png');
+import cat1 from './statics/cat1.png';
+import cat2 from './statics/cat2.png';
+import cat3 from './statics/cat3.png';
+import cat4 from './statics/cat4.png';
+import cat5 from './statics/cat5.png';
+import cat6 from './statics/cat6.png';
+import cat7 from './statics/cat7.png';
+import cat8 from './statics/cat8.png';
 
 class SequenceAnimatorExample extends React.Component {
   render() {
@@ -126,8 +127,8 @@ The `SequenceAnimator` receives several props:
 
 #### API
 `play` - Plays the animation (from the current frame)
-  
-`stop` - Stops the animation  
+
+`stop` - Stops the animation
 
 `reset` - Resets the animation to the first frame (0)
 
@@ -142,7 +143,7 @@ It is recommended to use easings only on linear animations.
 
 ### Example:
 
-![Ball Easing Example](./BallEasingAnimation.gif?raw=true "Ball Easing Example")
+![Ball Easing Example](./statics/BallEasingAnimation.gif?raw=true "Ball Easing Example")
 
 Both of the basketball animations above use the same sequence of images.
 
