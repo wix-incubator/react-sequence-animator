@@ -10,3 +10,7 @@ typings
 test/e2e/screenshots
 .yo-rc.json
 .env*.local
+
+/*.js
+/*.d.ts
+!wallaby.js

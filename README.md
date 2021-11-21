@@ -11,6 +11,10 @@ For example, a loader that has smooth transitions to a *success* and *fail* mode
 ```sh
 npm install --save react-sequence-animator
 ```
+or
+```sh
+yarn add react-sequence-animator
+```
 
 ## What You Get
 
@@ -26,6 +30,7 @@ and the number of frames in the sequence.
 In order to use this component you should know where each frame is located in the sprite image.
 
 ```javascript
+import { SpriteAnimator } from 'react-sequence-animator';
 import sprite from './sprites-cat-running.png';
 
 const WIDTH = 512;
@@ -84,6 +89,7 @@ The `SpriteAnimator` receives several props:
 The `SequenceAnimator` receives a sequence of images as its children, and *"plays"* them one after the other.
 
 ```javascript
+import { SequenceAnimator } from 'react-sequence-animator';
 import cat1 from './statics/cat1.png';
 import cat2 from './statics/cat2.png';
 import cat3 from './statics/cat3.png';
