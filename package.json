@@ -50,7 +50,6 @@
     "chai": "~4.1.0",
     "enzyme": "~2.9.0",
     "husky": "~4.2.1",
-    "import-path": "^1.0.2",
     "jsdom": "~11.1.0",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.10",

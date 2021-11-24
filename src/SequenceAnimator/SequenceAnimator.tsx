@@ -1,17 +1,17 @@
 import React from 'react';
 import { ease } from '../common';
 import {
-  SequenceanimatorProps,
-  SequenceanimatorState,
-  SequenceanimatorDefaultProps,
+  SequenceAnimatorProps,
+  SequenceAnimatorState,
+  SequenceAnimatorDefaultProps,
 } from './types';
 
 export class SequenceAnimator extends React.Component<
-  SequenceanimatorProps,
-  SequenceanimatorState
+  SequenceAnimatorProps,
+  SequenceAnimatorState
 > {
   static displayName = 'SequenceAnimator';
-  static defaultProps: SequenceanimatorDefaultProps = {
+  static defaultProps: SequenceAnimatorDefaultProps = {
     duration: 1000,
     autoplay: true,
     easing: 'linear',

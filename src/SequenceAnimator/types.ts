@@ -1,6 +1,6 @@
 import { Easing } from '../common.types';
 
-export type SequenceanimatorProps = {
+export type SequenceAnimatorProps = {
   autoplay?: boolean;
   duration?: number;
   loop?: boolean;
@@ -9,13 +9,13 @@ export type SequenceanimatorProps = {
   onAnimationStop?: () => void;
 };
 
-export type SequenceanimatorDefaultProps = {
+export type SequenceAnimatorDefaultProps = {
   duration: number;
   autoplay: boolean;
   easing: Easing;
   loop: boolean;
 };
 
-export type SequenceanimatorState = {
+export type SequenceAnimatorState = {
   frame: number;
 };
