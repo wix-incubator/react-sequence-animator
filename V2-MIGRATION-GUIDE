@@ -1,0 +1,18 @@
+# react-sequence-animator v2
+Migrating to this new major version is fairly simple.
+The only breaking change is ESM support which requires changing how importing the components is written.
+The main change in this version is infrastructure and dependencies updates.
+There are no changes in the usage or features of the components.
+
+## Typescript
+react-sequence-animator v2 is now written in Typescript and the components expose their types via their index file
+
+## ESM
+The library now supports ESM imports, which means imports such as:
+```ts
+import SpriteAnimator from 'react-sequence-animator/SpriteAnimator';
+```
+is not supported anymore, and imports should be written like this:
+```ts
+import { SpriteAnimator, SequenceAnimator } from 'react-sequence-animator';
+```

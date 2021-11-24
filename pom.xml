@@ -8,10 +8,6 @@
     <description>react-sequence-animator</description>
     <version>1.0.0-SNAPSHOT</version>
 
-    <organization>
-        <name>Restaurants</name>
-    </organization>
-
     <parent>
         <groupId>com.wixpress.common</groupId>
         <artifactId>wix-master-parent</artifactId>
