@@ -1848,13 +1848,6 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@phenomnomnominal/tsquery@^3.0.0":
-  version "3.0.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@phenomnomnominal/tsquery/-/tsquery-3.0.0.tgz#6f2f4dbf6304ff52b12cc7a5b979f20c3794a22a"
-  integrity sha1-by9Nv2ME/1KxLMeluXnyDDeUoio=
-  dependencies:
-    esquery "^1.0.1"
-
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.3.tgz#1eec460596d200c0236bf195b078a5d1df89b766"
@@ -7983,7 +7976,7 @@ commander@^6.2.0, commander@^6.2.1:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha1-B5LraC37wyWZm7K4T93duhEKxzw=
 
-commander@^8.1.0, commander@^8.2.0:
+commander@^8.1.0:
   version "8.3.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
   integrity sha1-SDfqGy2me5xhamevuw+v7lZ7ymY=
@@ -10365,7 +10358,7 @@ esprima@^4.0.0, esprima@^4.0.1, esprima@~4.0.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha1-E7BM2z5sXRnfkatph6hpVhmwqnE=
 
-esquery@^1.0.1, esquery@^1.2.0:
+esquery@^1.2.0:
   version "1.4.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/esquery/-/esquery-1.4.0.tgz#2148ffc38b82e8c7057dfed48425b3e61f0f24a5"
   integrity sha1-IUj/w4uC6McFff7UhCWz5h8PJKU=
@@ -12688,15 +12681,6 @@ import-local@^3.0.2:
   dependencies:
     pkg-dir "^4.2.0"
     resolve-cwd "^3.0.0"
-
-import-path@^1.0.2:
-  version "1.0.15"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/import-path/-/import-path-1.0.15.tgz#02a47d6d53595fec67826f42b3139392aa7818fe"
-  integrity sha1-AqR9bVNZX+xngm9CsxOTkqp4GP4=
-  dependencies:
-    "@phenomnomnominal/tsquery" "^3.0.0"
-    babel-runtime "^6.22.0"
-    commander "^8.2.0"
 
 imsc@^1.0.2:
   version "1.1.2"
