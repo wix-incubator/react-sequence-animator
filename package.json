@@ -13,7 +13,6 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.dev.wixpress.com/",
     "versionBumpStrategy": "minor"
   },
   "scripts": {
