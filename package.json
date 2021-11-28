@@ -13,6 +13,7 @@
     "dist"
   ],
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "versionBumpStrategy": "minor"
   },
   "scripts": {
